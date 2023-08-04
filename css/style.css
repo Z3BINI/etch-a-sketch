@@ -1,10 +1,24 @@
 * {
     margin: 0;
     padding: 0;
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 body {
     background-color: aqua;
+    display: flex;
+}
+
+div.controlPannel {
+    background-color: rgb(26, 145, 145);
+    height: 100vh;
+    flex: 1 1 auto;
+}
+
+div.workArea {
+    height: 100vh;
+    flex: 4 1 auto;
 }
 
 div.gridContainer {
