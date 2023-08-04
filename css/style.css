@@ -25,8 +25,9 @@ div.workArea {
 }
 
 div.gridContainer {
-    width: 500px;
-    height: 500px;
+    width: 650px;
+    height: 650px;
     border: 1px solid black;
     display: flex;
+    background-color: white;
 }
