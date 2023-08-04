@@ -1,17 +1,34 @@
 const gridContainer = document.querySelector('div.gridContainer');
 
-function createGrid(size) {
+function createGridRows(size) {
 
-    for (let i = 1; i <= (size ** 2); i++) {
+    for (let i = 1; i <= size; i++) { //Make desired number of rows for the grid
 
-        let div = document.createElement('div');
+        let divRow = document.createElement('div');
 
-        div.classList.add('gridSquare');
+        divRow.classList.add('gridRow');
 
-        gridContainer.appendChild(div);
-        
+        gridContainer.appendChild(divRow);
+
+    }
+    
+    const gridRows = document.querySelectorAll('div.gridRow'); 
+    
+    gridRows.forEach(gridRow => createGridColumns(gridRow)); //Loop through each earlier made row to make same amount of columns 
+
+    function createGridColumns(gridRow) {
+
+        for (let i = 1; i <= size; i++) {
+
+            let divColumn = document.createElement('div');
+
+            divColumn.classList.add('gridColumn');
+
+            gridRow.appendChild(divColumn);
+
+        }
     }
 
 }
 
-createGrid(2);
+createGridRows(2);
