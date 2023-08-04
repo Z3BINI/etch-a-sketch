@@ -28,11 +28,19 @@ div.gridContainer {
     width: 650px;
     height: 650px;
     border: 1px solid black;
-    display: flex;
     background-color: white;
+    display: flex;
+    flex-direction: column;
 }
 
-div.gridSquare {
-    padding: 5px;
+div.gridRow {
     border: 1px solid red;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+}
+
+div.gridColumn {
+    flex: 1 1 auto;
+    border: 1px solid black;
 }
