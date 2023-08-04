@@ -31,3 +31,8 @@ div.gridContainer {
     display: flex;
     background-color: white;
 }
+
+div.gridSquare {
+    padding: 5px;
+    border: 1px solid red;
+}

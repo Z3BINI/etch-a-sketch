@@ -6,6 +6,8 @@ function createGrid(size) {
 
         let div = document.createElement('div');
 
+        div.classList.add('gridSquare');
+
         gridContainer.appendChild(div);
         
     }
