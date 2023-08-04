@@ -33,14 +33,14 @@ div.gridContainer {
     flex-direction: column;
 }
 
-div.gridRow {
+div.gridRow { /*Rows flex in row direction*/
     border: 1px solid red;
     flex: 1 1 auto;
     display: flex;
     flex-direction: row;
 }
 
-div.gridColumn {
+div.gridColumn { /*Columns default flex in column direction*/
     flex: 1 1 auto;
     border: 1px solid black;
 }
