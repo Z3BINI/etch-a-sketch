@@ -5,16 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./js/script.js" defer></script>
     <link rel="stylesheet" href="./css/style.css">
-    <title>Document</title>
+    <title>Etch-a-Sketch!</title>
 </head>
 <body>
     <div class="controlPannel">
-        <h1>Etch-a-Sketch!</h1>
-        <p>Select from the options below:</p>
+        <div class="title">
+            <h1>Etch-a-Sketch!</h1>
+            <p>Select from the options below:</p>
+        </div>
 
-        <div class="slidecontainer">
-            <input type="range" min="2" max="100" value="4" class="slider">
-            <p>Grid Size: <span class="currentGridSize"></span>&#178;</p>
+        <div class="options">
+            <div class="sliderContainer">
+                <input type="range" min="2" max="100" value="4" class="slider">
+                <p>Grid Size: <span class="currentGridSize"></span>&#178;</p>
+            </div>
+            <div class="colorContainer">
+                <h2>Pick a color!</h2>
+                <input type="radio" id="black" name="color" value="black" checked>
+                <label for="black">Black</label><br>
+                <input type="radio" id="white" name="color" value="white">
+                <label for="white">Eraser</label><br>
+                <input type="radio" id="rgb" name="color" value="rgb">
+                <label for="rgb">RGB</label>
+            </div>
         </div>
     </div>
 
