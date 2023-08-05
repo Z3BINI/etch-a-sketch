@@ -35,6 +35,24 @@ function createGrid(size) {
         }
     }
 
+    const gridSquares = document.querySelectorAll('div.gridColumn');
+
+    paintGridSquares(gridSquares);
+
 }
 
-createGrid(4);
+function paintGridSquares(gridSquares) {
+    
+    gridSquares.forEach(gridSquare => gridSquare.addEventListener('mouseover', paintSquare));
+
+    function paintSquare(e) {
+        
+        this.classList.add('hoveredSquare');
+        
+    }
+
+}
+
+
+
+createGrid(9);
