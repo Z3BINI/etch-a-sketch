@@ -1,6 +1,22 @@
 const gridContainer = document.querySelector('div.gridContainer');
 
-function createGrid(size) {
+let slider = document.querySelector("input.slider");
+let currentGridSize = document.querySelector("span.currentGridSize");
+currentGridSize.innerHTML = slider.value; //Initialize the span with default slider value
+
+slider.oninput = function() { //Called everytime slider value changes
+
+    currentGridSize.innerHTML = this.value; 
+
+    clearGrid(); //To avoid div accomulation
+
+    createGrid(+(this.value));
+
+}
+
+const clearGrid = () => gridContainer.innerHTML = ''; 
+
+function createGrid(size) { 
 
     createGridRows(size);
 
@@ -20,7 +36,7 @@ function createGrid(size) {
         
     const gridRows = document.querySelectorAll('div.gridRow'); 
     
-    gridRows.forEach(gridRow => createGridColumns(gridRow)); //Loop through each earlier made row to make same amount of columns 
+    gridRows.forEach(gridRow => createGridColumns(gridRow)); //Loop through each earlier made row to make same amount of columns with createGridColumns()
 
     function createGridColumns(gridRow) {
 
@@ -52,7 +68,3 @@ function paintGridSquares(gridSquares) {
     }
 
 }
-
-
-
-createGrid(9);
