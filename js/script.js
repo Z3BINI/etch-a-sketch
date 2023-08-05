@@ -4,6 +4,8 @@ let slider = document.querySelector("input.slider");
 let currentGridSize = document.querySelector("span.currentGridSize");
 currentGridSize.innerHTML = slider.value; //Initialize the span with default slider value
 
+createGrid(+(slider.value)); //Initialize the grid with the default slider value before the slider value ever modifying
+
 slider.oninput = function() { //Called everytime slider value changes
 
     currentGridSize.innerHTML = this.value; 
