@@ -34,7 +34,6 @@ div.gridContainer {
 }
 
 div.gridRow { /*Rows flex in row direction*/
-    border: 1px solid red;
     flex: 1 1 auto;
     display: flex;
     flex-direction: row;
@@ -43,4 +42,8 @@ div.gridRow { /*Rows flex in row direction*/
 div.gridColumn { /*Columns default flex in column direction*/
     flex: 1 1 auto;
     border: 1px solid black;
+}
+
+div.hoveredSquare {
+    background-color: black;
 }
