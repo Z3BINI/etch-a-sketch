@@ -5,6 +5,8 @@ const currentGridSize = document.querySelector("span.currentGridSize");
 
 const colorOptions = document.querySelectorAll('input[name="color"]'); 
 
+const clearCanvas = document.querySelector('button.resetCanvas');
+
 let currentColor = 'black'; //Initialize color ouside so that it doesn't get overwritten within the functions below
 
 currentGridSize.innerHTML = slider.value; //Initialize the span with default slider value
@@ -19,6 +21,14 @@ slider.oninput = function() { //Called everytime slider value changes
 
     createGrid(+(this.value));
 
+}
+
+clearCanvas.addEventListener('click', () => clearGridPaint());
+
+const clearGridPaint = () => {
+    const divs = document.querySelectorAll('.gridContainer div');
+    
+    divs.forEach(div => { div.style.cssText = 'background-color: white;'})
 }
 
 const clearGrid = () => gridContainer.innerHTML = ''; 
