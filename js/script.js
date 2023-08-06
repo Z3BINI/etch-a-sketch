@@ -3,7 +3,7 @@ const gridContainer = document.querySelector('div.gridContainer');
 const slider = document.querySelector("input.slider");
 const currentGridSize = document.querySelector("span.currentGridSize");
 
-const colorOptions = document.querySelectorAll('input[name="color"]');
+const colorOptions = document.querySelectorAll('input[name="color"]'); 
 
 let currentColor = 'black'; //Initialize color ouside so that it doesn't get overwritten within the functions below
 
@@ -27,7 +27,7 @@ function createGrid(size) {
 
     createGridRows(size);
 
-    function createGridRows(size) {console.log(currentColor);
+    function createGridRows(size) {
 
         for (let i = 1; i <= size; i++) { //Make desired number of rows for the grid
 
@@ -58,7 +58,7 @@ function createGrid(size) {
         }
     }
 
-    const gridSquares = document.querySelectorAll('div.gridColumn');
+    const gridSquares = document.querySelectorAll('div.gridColumn'); 
 
     paintGridSquares(gridSquares, colorOptions);
 
@@ -78,11 +78,27 @@ function paintGridSquares(gridSquares, colorOptions) {
 
     function paintSquare(event, currentColor) {
 
+        const squareStatus = (currentSquare) => currentSquare.currentTarget.style.cssText; //Check current in-line CSS
+        
         switch (currentColor) {
 
             case 'black':
-                
-                event.currentTarget.style.cssText = 'background-color: black;';
+
+                if ((!(squareStatus(event)) || (squareStatus(event).includes('white')) || (squareStatus(event).includes('rgb') && !(squareStatus(event).includes('rgba(0, 0, 0') || squareStatus(event).includes('rgb(0, 0, 0)'))))) { //Checks if square has not been painted at least once by any other color
+
+                    event.currentTarget.style.cssText = `background-color: rgb(0, 0, 0, 0.1);`; //If not then 'initialize' the painting with 0.1 alpha
+                    
+                } else { 
+                    
+                    if (squareStatus(event).includes('rgba')) { //If it has alpha defined then make darker
+
+                        let currentOpacity = +(event.currentTarget.style.cssText.split(',')[3].slice(0, 4)); //If alpha is still not 1 (disapeared by default when reaches 1) it will get the current alpha and convert to int
+
+                        event.currentTarget.style.cssText = `background-color: rgb(0, 0, 0, ${currentOpacity += 0.1});`; 
+                        
+                    }
+
+                }
 
                 break;
 
@@ -97,12 +113,6 @@ function paintGridSquares(gridSquares, colorOptions) {
                 const randomizeRGB = () => Math.floor(Math.random() * 255);
 
                 event.currentTarget.style.cssText = `background-color: rgb(${randomizeRGB()}, ${randomizeRGB()}, ${randomizeRGB()});`;
-
-                break;
-
-            default:
-
-                event.currentTarget.style.cssText = 'background-color: black;';
 
                 break;
 
