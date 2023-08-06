@@ -76,7 +76,7 @@ function paintGridSquares(gridSquares, colorOptions) {
 
     }
 
-    function paintSquare(event, currentColor) {
+    function paintSquare(event, currentColor) { 
 
         const squareStatus = (currentSquare) => currentSquare.currentTarget.style.cssText; //Check current in-line CSS
         
@@ -84,13 +84,13 @@ function paintGridSquares(gridSquares, colorOptions) {
 
             case 'black':
 
-                if ((!(squareStatus(event)) || (squareStatus(event).includes('white')) || (squareStatus(event).includes('rgb') && !(squareStatus(event).includes('rgba(0, 0, 0') || squareStatus(event).includes('rgb(0, 0, 0)'))))) { //Checks if square has not been painted at least once by any other color
+                if ((!(squareStatus(event)) || (squareStatus(event).includes('white')) || (squareStatus(event).includes('rgb') && !(squareStatus(event).includes('rgba(0, 0, 0') || squareStatus(event).includes('rgb(0, 0, 0)'))))) { //Checks if square has not been painted at least once by any other color, even its own color
 
                     event.currentTarget.style.cssText = `background-color: rgb(0, 0, 0, 0.1);`; //If not then 'initialize' the painting with 0.1 alpha
                     
                 } else { 
                     
-                    if (squareStatus(event).includes('rgba')) { //If it has alpha defined then make darker
+                    if (squareStatus(event).includes('rgba')) { //If it has alpha defined then make darker because rgba becomes rbgb as soon as alpha = 1
 
                         let currentOpacity = +(event.currentTarget.style.cssText.split(',')[3].slice(0, 4)); //If alpha is still not 1 (disapeared by default when reaches 1) it will get the current alpha and convert to int
 
@@ -109,10 +109,32 @@ function paintGridSquares(gridSquares, colorOptions) {
                 break;
 
             case 'rgb':
+                
+                const randomizeRGB = () => {
+                    
+                    return `${Math.ceil(Math.random() * 255)}, ${Math.ceil(Math.random() * 255)}, ${Math.ceil(Math.random() * 255)}`; //Used ceil to avoid the small chance of rgb(0, 0, 0) to not break below if logic
 
-                const randomizeRGB = () => Math.floor(Math.random() * 255);
+                }
 
-                event.currentTarget.style.cssText = `background-color: rgb(${randomizeRGB()}, ${randomizeRGB()}, ${randomizeRGB()});`;
+                if ((!(squareStatus(event)) || (squareStatus(event).includes('white')) || (squareStatus(event).includes('rgb(0, 0, 0)') || (squareStatus(event).includes('rgba(0, 0, 0'))))) { //Checks if square has not been painted at least once by any other color or itself
+                    
+                    event.currentTarget.style.cssText = `background-color: rgb(${randomizeRGB()}, 0.1);`; //If not then 'initialize' the painting with 0.1 alpha
+
+                } else { 
+                    
+                    if (squareStatus(event).includes('rgba')) { //If it has alpha defined then make darker then hasn't reached 1 yet, keep darkening
+
+                        let currentOpacity = +(event.currentTarget.style.cssText.split(',')[3].slice(0, 4)); //If alpha is still not 1 (disapeared by default when reaches 1) it will get the current alpha and convert to int
+                    
+                        event.currentTarget.style.cssText = `background-color: rgb(${randomizeRGB()}, ${currentOpacity+=0.1});`; 
+                    
+                    } else {
+
+                        event.currentTarget.style.cssText = `background-color: rgb(${randomizeRGB()});`; //Alpha reached one, just randomize the color and leave alpha
+
+                    }
+                    
+                }
 
                 break;
 
