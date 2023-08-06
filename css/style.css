@@ -1,8 +1,22 @@
+@font-face {
+    font-family: 'rock-salt-regular'; /*a name to be used later*/
+    src: url('./../fonts/Rock_Salt/RockSalt-Regular.ttf'); /*URL to font*/
+}
+
 * {
     margin: 0;
     padding: 0;
-    color: white;
+    color: #FFF10A;
+    text-shadow: 1px 1px #FEC208, -1px -1px #444;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+h1 {
+    font-family: 'rock-salt-regular';
+}
+
+p {
+    text-align: center;
 }
 
 body {
@@ -14,6 +28,11 @@ div.controlPannel {
     background-color: #FF2D08;
     height: 100vh;
     flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 75px;
 }
 
 div.workArea {
@@ -44,6 +63,52 @@ div.gridColumn { /*Columns default flex in column direction*/
     border: 1px solid black;
 }
 
+div.options, .sliderContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sliderContainer {
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+.sliderContainer input {
+    margin-bottom: 10px;
+}
+
+.colorContainer {
+    margin-bottom: 30px;
+}
+
 .erased {
     background-color: #F0EAD6;
 }
+
+.resetCanvas {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 25px;
+}
+
+input[type="range"] {
+    /* removing default appearance */
+    -webkit-appearance: none;
+    appearance: none;
+    /* creating a custom design */
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+
+    height: 15px;
+    background: #CF240A;
+    border-radius: 16px;
+  }
