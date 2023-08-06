@@ -71,36 +71,41 @@ function paintGridSquares(gridSquares, colorOptions) {
     gridSquares.forEach(gridSquare => gridSquare.addEventListener('mouseover', event => paintSquare(event, currentColor)));
 
     function changeCurrentColor(event) {
+
         currentColor = event.currentTarget.value;
+
     }
 
     function paintSquare(event, currentColor) {
 
         switch (currentColor) {
+
             case 'black':
-                event.currentTarget.classList.add('hoveredSquareBlack');
+                
+                event.currentTarget.style.cssText = 'background-color: black;';
 
-                event.currentTarget.classList.remove('hoveredSquareErase');
-                event.currentTarget.classList.remove('hoveredSquareRGB');
                 break;
+
             case 'white':
-                event.currentTarget.classList.add('hoveredSquareErase');
 
-                event.currentTarget.classList.remove('hoveredSquareBlack');
-                event.currentTarget.classList.remove('hoveredSquareRGB');
+                event.currentTarget.style.cssText = 'background-color: white;';
+
                 break;
+
             case 'rgb':
-                event.currentTarget.classList.add('hoveredSquareRGB');
 
-                event.currentTarget.classList.remove('hoveredSquareErase');
-                event.currentTarget.classList.remove('hoveredSquareBlack');
+                const randomizeRGB = () => Math.floor(Math.random() * 255);
+
+                event.currentTarget.style.cssText = `background-color: rgb(${randomizeRGB()}, ${randomizeRGB()}, ${randomizeRGB()});`;
+
                 break;
+
             default:
-                event.currentTarget.classList.add('hoveredSquareBlack');
 
-                event.currentTarget.classList.remove('hoveredSquareErase');
-                event.currentTarget.classList.remove('hoveredSquareRGB');
+                event.currentTarget.style.cssText = 'background-color: black;';
+
                 break;
+
         }
         
     }
