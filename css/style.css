@@ -6,12 +6,12 @@
 }
 
 body {
-    background-color: aqua;
+    background-color: #CF240A;
     display: flex;
 }
 
 div.controlPannel {
-    background-color: rgb(26, 145, 145);
+    background-color: #FF2D08;
     height: 100vh;
     flex: 1 1 auto;
 }
@@ -28,7 +28,7 @@ div.gridContainer {
     width: 650px;
     height: 650px;
     border: 1px solid black;
-    background-color: white;
+    background-color: #F0EAD6;
     display: flex;
     flex-direction: column;
 }
@@ -42,4 +42,8 @@ div.gridRow { /*Rows flex in row direction*/
 div.gridColumn { /*Columns default flex in column direction*/
     flex: 1 1 auto;
     border: 1px solid black;
+}
+
+.erased {
+    background-color: #F0EAD6;
 }

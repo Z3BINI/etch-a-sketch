@@ -28,7 +28,7 @@ clearCanvas.addEventListener('click', () => clearGridPaint());
 const clearGridPaint = () => {
     const divs = document.querySelectorAll('.gridContainer div');
     
-    divs.forEach(div => { div.style.cssText = 'background-color: white;'})
+    divs.forEach(div => { div.style.cssText = ''})
 }
 
 const clearGrid = () => gridContainer.innerHTML = ''; 
@@ -114,7 +114,9 @@ function paintGridSquares(gridSquares, colorOptions) {
 
             case 'white':
 
-                event.currentTarget.style.cssText = 'background-color: white;';
+                event.currentTarget.style.cssText = '';
+
+                event.currentTarget.classList.add('erased');
 
                 break;
 
