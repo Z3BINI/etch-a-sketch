@@ -44,6 +44,14 @@ div.gridColumn { /*Columns default flex in column direction*/
     border: 1px solid black;
 }
 
-div.hoveredSquare {
+div.hoveredSquareBlack {
     background-color: black;
+}
+
+div.hoveredSquareErase {
+    background-color: white;
+}
+
+div.hoveredSquareRGB {
+    background-color: red;
 }
